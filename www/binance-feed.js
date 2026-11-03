@@ -12,7 +12,7 @@ export class BinanceSpotFeed {
   stop(){this.closed=true;if(this.rebuildTimer){clearTimeout(this.rebuildTimer);this.rebuildTimer=null;}try{this.tickerSocket?.close(1000,"user stop");}catch{}for(const ws of this.sockets){ws._intentionalClose=true;try{ws.close(1000,"user stop");}catch{}}this.sockets=[];}
   connectTicker(){
     if(this.closed)return;
-    const ws=new this.WS("wss://stream.binance.com:9443/ws/!ticker@arr");
+    const ws=new this.WS("wss://stream.binance.com:443/ws/!ticker@arr");
     this.tickerSocket=ws;
     ws.onopen=()=>{this.retry=0;this.onStatus({kind:"ticker",state:"connected"});};
     ws.onmessage=e=>{try{const arr=JSON.parse(e.data);if(!Array.isArray(arr))return;
@@ -42,7 +42,7 @@ export class BinanceSpotFeed {
     const perSocket=Math.max(1,Math.floor(this.cfg.streamsPerSocket/7));
     for(let i=0;i<this.symbols.length;i+=perSocket){
       const symbols=this.symbols.slice(i,i+perSocket),streams=symbols.flatMap(streamsPerSymbol);
-      const ws=new this.WS("wss://stream.binance.com:9443/stream?streams="+streams.join("/"));
+      const ws=new this.WS("wss://stream.binance.com:443/stream?streams="+streams.join("/"));
       this.sockets.push(ws);
       ws.onopen=()=>this.onStatus({kind:"market",state:"connected",symbols:symbols.length,streams:streams.length});
       ws.onmessage=e=>{try{const packet=JSON.parse(e.data);this.handle(packet.data??packet);}catch(err){this.onStatus({kind:"market",state:"parse_error",error:String(err)});}};
