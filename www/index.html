@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090d14">
+<title>CryptoSignal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div><div class="brand"><span class="mark">C</span> CRYPTOSIGNAL</div><div class="sub">BINANCE SPOT RADAR</div></div>
+  <div id="connection" class="state"><i></i> BAĞLANIYOR</div>
+</header>
+<main>
+  <section class="hero">
+    <div><div class="eyebrow">CANLI PİYASA AKIŞI</div><h1>Spot Radar</h1><p>Emir göndermez · Yalnızca piyasa verisi</p></div>
+    <div class="pulse"><span></span><span></span><span></span></div>
+  </section>
+  <section class="stats">
+    <article><small>İZLENEN USDT PARİTESİ</small><strong id="pairs">—</strong></article>
+    <article><small>SON GÜNCELLEME</small><strong id="updated">—</strong></article>
+  </section>
+  <section class="panel">
+    <div class="panel-head"><div><h2>Piyasa Hareketi</h2><p>24 saatlik değişime göre canlı sıralama</p></div><span class="live-tag">LIVE</span></div>
+    <div class="table-head"><span>PARİTE</span><span>SON FİYAT</span><span>24S %</span></div>
+    <div id="markets" class="markets"><div class="empty">Binance Spot verisi bekleniyor…</div></div>
+  </section>
+  <section class="panel candidate-panel">
+    <div class="panel-head"><div><h2>Motor Adayları</h2><p>Yalnızca kaynak kurallarını geçen adaylar</p></div><span class="live-tag">RADAR</span></div>
+    <div id="history-status" class="history-status">Geçmiş mum verisi bekleniyor…</div>
+    <div id="candidates"><div class="empty">Motor verileri bekleniyor…</div></div>
+  </section>
+  <section class="panel analysis-panel">
+    <div class="panel-head"><div><h2>Teknik Analiz & İşlem Planı</h2><p>Aday seç · grafik, formasyon, destek/direnç ve risk planı</p></div><span class="live-tag">SPOT</span></div>
+    <div id="analysis-empty" class="empty">Analiz için motor adaylarından birini seçin.</div>
+    <div id="analysis-detail" hidden>
+      <div class="analysis-symbol"><b id="analysis-symbol">—</b><span id="analysis-trend">—</span></div>
+      <canvas id="price-chart" width="900" height="420" aria-label="Mum grafiği ve destek direnç seviyeleri"></canvas>
+      <div id="analysis-metrics" class="analysis-grid"></div>
+      <div class="plan-grid" id="trade-plan"></div>
+      <div class="pattern-list" id="patterns"></div>
+      <p class="disclaimer">Alış/satış seviyeleri otomatik teknik senaryodur; emir değildir. Formasyonlar olasılık olarak etiketlenir. Pump puanı olasılık/yüzde tahmini değildir.</p>
+    </div>
+  </section>
+  <section class="notice">
+    <div class="notice-icon">i</div>
+    <div><b>Motor hesaplama durumu</b><p>M1 işlem akışı ve M5 mum/defter/işlem verileri uygulama içinde hesaplanır. M2, Binance Spot geçmiş ve kapanmış mumlarıyla taranır. Listelenenler motor filtresinden geçen teknik adaylardır; al-sat talimatı veya getiri garantisi değildir.</p></div>
+  </section>
+</main>
+<footer><span>CRYPTOSIGNAL</span><span>LOCAL ANDROID BUILD · V0.7</span></footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
